@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { connect } from './redux/blockchain/blockchainActions';
 import { fetchData } from './redux/data/dataActions';
@@ -143,7 +143,12 @@ function App() {
     <s.Screen style={{ backgroundColor: 'var(--white)' }}>
       <s.Container flex={1} ai={'center'} style={{ padding: 24 }}>
         <s.TextTitle
-          style={{ textAlign: 'center', fontSize: 35, fontWeight: 'bold' }}
+          style={{
+            textAlign: 'center',
+            fontSize: 35,
+            fontWeight: 'bold',
+            margin: '30px 0',
+          }}
         >
           MEME STICKS CLUB
         </s.TextTitle>
@@ -265,10 +270,16 @@ function App() {
             )}
           </s.Container>
         </ResponsiveWrapper>
+
         <s.Container
           jc={'center'}
           ai={'center'}
-          style={{ backgroundColor: '#fff', width: '100vw', padding: '60px 0' }}
+          style={{
+            backgroundColor: '#fff',
+            width: '100vw',
+            padding: '60px 0',
+            marginTop: '40px',
+          }}
         >
           <s.TextTitle
             style={{
@@ -304,6 +315,24 @@ function App() {
             </ul>
           </Guarantees>
         </s.Container>
+        <Gallery>
+          <div className='photobanner'>
+            <img src={'/assets/2.png'} alt='' />
+            <img src={'/assets/3.png'} alt='' />
+            <img src={'/assets/4.png'} alt='' />
+            <img src={'/assets/5.png'} alt='' />
+            <img src={'/assets/6.png'} alt='' />
+            <img src={'/assets/7.png'} alt='' />
+            <img src={'/assets/8.png'} alt='' />
+            <img src={'/assets/9.png'} alt='' />
+            <img src={'/assets/10.png'} alt='' />
+            <img src={'/assets/11.png'} alt='' />
+            <img src={'/assets/12.png'} alt='' />
+            <img src={'/assets/13.png'} alt='' />
+            <img src={'/assets/14.png'} alt='' />
+            <img src={'/assets/15.png'} alt='' />
+          </div>
+        </Gallery>
         <s.Container
           jc={'center'}
           ai={'center'}
@@ -329,12 +358,12 @@ function App() {
             But why would I pay for a meme stick ?
           </s.TextSubTitle>
           <s.TextDescription style={{ textAlign: 'center', marginTop: '8px' }}>
-            Cuz they cute & fun, cuz ur loaded, cuz you’re supporting an indie
-            solo dev, to brag in front of ur friends, to make money, to make the
-            world a better place, to save dolphins.
+            Because they're cute & fun, because you're loaded, because you'll be
+            supporting an indie solo dev, to brag in front of your friends, to
+            make money, to make the world a better place, to save dolphins...
             <br />
             <br />
-            The real question is why would you not buy a meme stick ?
+            The real question is why would you <u>not buy a meme stick ?</u>
           </s.TextDescription>
           <s.TextSubTitle
             style={{
@@ -356,24 +385,7 @@ function App() {
             <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>memes</a> are
             ?<br /> 5) Obi Wan Kenobi
           </s.TextDescription>
-          <s.TextSubTitle
-            style={{
-              textAlign: 'center',
-              marginTop: '16px',
-              fontWeight: 'bold',
-            }}
-          >
-            Who the f are you ?
-          </s.TextSubTitle>
-          <s.TextDescription style={{ textAlign: 'center', marginTop: '8px' }}>
-            I’m an indie developer trying to survive in this mess of a world we
-            live in.
-            <br /> I’m probably vaccinated, and I love dolphins or maybe they
-            scare the shit out of me I can’t remember.
-            <br />
-            <br />
-            Please buy my memes so I can eat & pay rent this month.
-          </s.TextDescription>
+
           <s.TextSubTitle
             style={{
               textAlign: 'center',
@@ -395,6 +407,39 @@ function App() {
     </s.Screen>
   );
 }
+
+export const Gallery = styled.div`
+  height: 100px;
+  position: relative;
+  margin-bottom: 80px;
+
+  .photobanner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: bannermove 30s linear infinite alternate;
+
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  .photobanner img {
+    height: 175px;
+    margin: 0 0.1em;
+  }
+
+  @keyframes bannermove {
+    0% {
+      transform: translate(-25%, 0);
+    }
+    100% {
+      transform: translate(-75%, 0);
+    }
+  }
+`;
 
 export const Guarantees = styled.div`
   display: flex;
