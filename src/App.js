@@ -265,7 +265,11 @@ function App() {
             )}
           </s.Container>
         </ResponsiveWrapper>
-        <s.Container jc={'center'} ai={'center'}>
+        <s.Container
+          jc={'center'}
+          ai={'center'}
+          style={{ backgroundColor: '#fff', width: '100vw', padding: '60px 0' }}
+        >
           <s.TextTitle
             style={{
               textAlign: 'center',
@@ -273,7 +277,7 @@ function App() {
               fontWeight: 'bold',
             }}
           >
-            Guarantees
+            GUARANTEES
           </s.TextTitle>
           <Guarantees>
             <ul>
@@ -303,7 +307,8 @@ function App() {
         <s.Container
           jc={'center'}
           ai={'center'}
-          style={{ marginTop: '40px', maxWidth: '700px' }}
+          style={{ marginTop: '40px', maxWidth: '650px' }}
+          className='FAQ'
         >
           <s.TextTitle
             style={{
@@ -343,11 +348,13 @@ function App() {
           <s.TextDescription style={{ textAlign: 'center', marginTop: '8px' }}>
             If you’re still not convinced to buy a meme stick, you probably :
             <br />
+            <br />
             1) Are a psychopath
             <br /> 2) Don’t want to save dolphins
             <br /> 3) Got no friends
-            <br /> 4) Don’t know what meme are ?<br /> 5) Hate my guts for some
-            reasons
+            <br /> 4) Don’t know what{' '}
+            <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>memes</a> are
+            ?<br /> 5) Obi Wan Kenobi
           </s.TextDescription>
           <s.TextSubTitle
             style={{
@@ -360,7 +367,8 @@ function App() {
           </s.TextSubTitle>
           <s.TextDescription style={{ textAlign: 'center', marginTop: '8px' }}>
             I’m an indie developer trying to survive in this mess of a world we
-            live in. I’m probably vaccinated, and I love dolphins or maybe they
+            live in.
+            <br /> I’m probably vaccinated, and I love dolphins or maybe they
             scare the shit out of me I can’t remember.
             <br />
             <br />
@@ -380,7 +388,7 @@ function App() {
             make another collection and we’ll find another animal to save.
             <br />
             <br />
-            Maybe I’ll even create a Twitter account.
+            Maybe then I’ll even create a Twitter account.
           </s.TextDescription>
         </s.Container>
       </s.Container>
@@ -398,14 +406,20 @@ export const Guarantees = styled.div`
   justify-content: center;
   font-size: 16px;
   ul {
+    margin-top: 40px;
+  }
+  ul:nth-child(2) > li:nth-child(3) {
+    font-weight: bold;
   }
   li {
     position: relative;
+    line-height: 2em;
     @media (min-width: 767px) {
       font-size: 22px;
     }
   }
   i {
+    line-height: 2em;
     position: absolute;
     color: var(--green);
     left: -2rem;
