@@ -1218,9 +1218,9 @@ contract MemeSticks is ERC721Enumerable, Ownable {
   uint256 public cost = 0.01 ether;
   uint256 public maxSupply = 2500;
   uint256 public maxMintAmount = 10;
-  uint256 public nftPerAddressLimit = 10;
+  uint256 public nftPerAddressLimit = 20;
   bool public paused = false;
-  bool public onlyWhitelisted = true;
+  bool public onlyWhitelisted = false;
   address payable commissions = payable(0x8D3cF2E9367780c4B8f9226718b7360F0874b988);
   address[] public whitelistedAddresses;
 
@@ -1246,12 +1246,16 @@ contract MemeSticks is ERC721Enumerable, Ownable {
     require(supply + _mintAmount <= maxSupply, "max NFT limit exceeded");
 
     if (msg.sender != owner()) {
+        uint256 ownerTokenCount = balanceOf(msg.sender);
         if(onlyWhitelisted == true) {
             require(isWhitelisted(msg.sender), "user is not whitelisted");
-            uint256 ownerTokenCount = balanceOf(msg.sender);
-            require(ownerTokenCount < nftPerAddressLimit, "max NFT per address exceeded");
         }
+        if(isWhitelisted(msg.sender)) {
+            require(ownerTokenCount < nftPerAddressLimit, "max NFT per address exceeded");
+        } else {
+        require(ownerTokenCount < nftPerAddressLimit, "max NFT per address exceeded");
         require(msg.value >= cost * _mintAmount, "insufficient funds");
+        }
     }
 
     for (uint256 i = 1; i <= _mintAmount; i++) {

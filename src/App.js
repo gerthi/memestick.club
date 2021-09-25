@@ -154,8 +154,9 @@ function App() {
             margin: '30px 0',
           }}
         >
-          MEME STICKS CLUB
+          MEME STICKS CLUB{' '}
         </s.TextTitle>
+
         <ResponsiveWrapper flex={1} style={{ padding: 24 }}>
           <s.Container
             flex={1}
