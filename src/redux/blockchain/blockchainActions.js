@@ -47,12 +47,12 @@ export const connect = () => {
         const networkId = await ethereum.request({
           method: 'net_version',
         });
-        console.log('network id is :', networkId);
+        // console.log('network id is :', networkId);
         // const NetworkData = await SmartContract.networks[networkId];
         if (networkId == 4) {
           const SmartContractObj = new Web3EthContract(
             SmartContract,
-            '0xCb64F973Dce3A9B7fFAE08d0D5183db70B152663'
+            '0x82dDD5dd19229AbeCA7910998E8e22392be203da'
           );
           dispatch(
             connectSuccess({

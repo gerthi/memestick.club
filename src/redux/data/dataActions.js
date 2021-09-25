@@ -45,6 +45,10 @@ export const fetchData = (account) => {
         .getState()
         .blockchain.smartContract.methods.owner()
         .call();
+      let isWhitelisted = await store
+        .getState()
+        .blockchain.smartContract.methods.isWhitelisted(account)
+        .call();
       dispatch(
         fetchDataSuccess({
           name,
@@ -52,6 +56,7 @@ export const fetchData = (account) => {
           cost,
           owner,
           balance,
+          isWhitelisted,
         })
       );
     } catch (err) {

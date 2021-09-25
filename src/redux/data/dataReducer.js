@@ -7,6 +7,7 @@ const initialState = {
   error: false,
   owner: '',
   errorMsg: '',
+  isWhitelisted: '',
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -29,6 +30,7 @@ const dataReducer = (state = initialState, action) => {
         error: false,
         owner: action.payload.owner,
         errorMsg: '',
+        isWhitelisted: action.payload.isWhitelisted,
       };
     case 'CHECK_DATA_FAILED':
       return {

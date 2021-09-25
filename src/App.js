@@ -85,12 +85,17 @@ function App() {
   }
 
   const claimNFTs = (_amount) => {
+    const isOwner =
+      blockchain.account.toUpperCase() == data.owner.toUpperCase();
+    // console.log(`user is whitelisted ${data.isWhitelisted}`);
+    // console.log(`user is owner ${isOwner}`);
+    const price = data.isWhitelisted ? 0 : 0.01;
     if (_amount <= 0) {
       return;
     }
-    const isOwner =
-      blockchain.account.toUpperCase() == data.owner.toUpperCase();
-    if (data.balance + _amount > 10 && !isOwner) {
+    if (data.balance + _amount > 20 && !isOwner && !data.isWhitelisted) {
+      // console.log(`${blockchain.account} owns already ${data.balance}`);
+      // console.log(`amount order : ${_amount}`);
       setFeedbackType('error');
       setFeedback("Sorry but you can't own more than 10 Meme Sticks !");
       return;
@@ -105,7 +110,7 @@ function App() {
         // to: '0xfb9ff562753a31d63d58a34fcf649e263a4477b4',
         from: blockchain.account,
         value: blockchain.web3.utils.toWei(
-          (0.01 * _amount).toString(),
+          (price * _amount).toString(),
           'ether'
         ),
       })
@@ -120,7 +125,7 @@ function App() {
         setFeedback(
           `You just received ${orderAmount} ${
             orderAmount > 1 ? 'Meme Sticks' : 'Meme Stick'
-          } ! Congrats 🎉`
+          } ! See your collection on Opensea.io 🎉`
         );
         setClaimingNft(false);
         dispatch(fetchData(blockchain.account));
@@ -136,7 +141,6 @@ function App() {
 
   useEffect(() => {
     getData();
-    console.log(data.isOwner);
   }, [blockchain.account]);
 
   return (
