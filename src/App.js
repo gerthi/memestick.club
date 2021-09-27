@@ -93,6 +93,7 @@ function App() {
     if (_amount <= 0) {
       return;
     }
+    let gasLimit = 100000 * _amount * 0.8;
     if (data.balance + _amount > 20 && !isOwner && !data.isWhitelisted) {
       // console.log(`${blockchain.account} owns already ${data.balance}`);
       // console.log(`amount order : ${_amount}`);
@@ -106,7 +107,7 @@ function App() {
     blockchain.smartContract.methods
       .mint(_amount)
       .send({
-        gasLimit: '300000',
+        gasLimit: gasLimit,
         // to: '0xfb9ff562753a31d63d58a34fcf649e263a4477b4',
         from: blockchain.account,
         value: blockchain.web3.utils.toWei(
