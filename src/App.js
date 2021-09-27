@@ -89,7 +89,7 @@ function App() {
       blockchain.account.toUpperCase() == data.owner.toUpperCase();
     // console.log(`user is whitelisted ${data.isWhitelisted}`);
     // console.log(`user is owner ${isOwner}`);
-    const price = data.isWhitelisted ? 0 : 0.01;
+    const price = data.isWhitelisted || isOwner ? 0 : 0.01;
     if (_amount <= 0) {
       return;
     }
@@ -106,7 +106,7 @@ function App() {
     blockchain.smartContract.methods
       .mint(_amount)
       .send({
-        // gasLimit: '285000',
+        gasLimit: '285000',
         // to: '0xfb9ff562753a31d63d58a34fcf649e263a4477b4',
         from: blockchain.account,
         value: blockchain.web3.utils.toWei(
@@ -146,17 +146,28 @@ function App() {
   return (
     <s.Screen style={{ backgroundColor: 'var(--white)' }}>
       <s.Container flex={1} ai={'center'} style={{ padding: 24 }}>
-        <s.TextTitle
-          style={{
-            textAlign: 'center',
-            fontSize: 35,
-            fontWeight: 'bold',
-            margin: '30px 0',
-          }}
-        >
-          MEME STICKS CLUB{' '}
-        </s.TextTitle>
-
+        <div style={{ position: 'relative' }}>
+          <s.TextTitle
+            style={{
+              textAlign: 'center',
+              fontSize: 35,
+              fontWeight: 'bold',
+              margin: '30px 0',
+            }}
+          >
+            MEME STICKS CLUB{' '}
+          </s.TextTitle>
+          <p className='verified'>
+            pssst, we're
+            <a
+              href='https://etherscan.io/address/0xc5d71b6f31608a64e123d0ad2f9fb340978bcb23#readContract'
+              target='_blank'
+            >
+              &nbsp;verified&nbsp;
+            </a>
+            on etherscan
+          </p>
+        </div>
         <ResponsiveWrapper flex={1} style={{ padding: 24 }}>
           <s.Container
             flex={1}
@@ -360,6 +371,30 @@ function App() {
               fontWeight: 'bold',
             }}
           >
+            Is this a scam ?
+          </s.TextSubTitle>
+          <s.TextDescription style={{ textAlign: 'center', marginTop: '8px' }}>
+            No it's not !
+            <br />
+            <br />
+            It's just a simple NFT project, made with love with my two hands.
+            The ethereum smartContract handles everything and has been &nbsp;
+            <a
+              href='https://etherscan.io/address/0xc5d71b6f31608a64e123d0ad2f9fb340978bcb23#readContract'
+              target='_blank'
+            >
+              verified on etherscan
+            </a>
+            .
+            <br />
+          </s.TextDescription>
+          <s.TextSubTitle
+            style={{
+              textAlign: 'center',
+              marginTop: '16px',
+              fontWeight: 'bold',
+            }}
+          >
             But why would I pay for a meme stick ?
           </s.TextSubTitle>
           <s.TextDescription style={{ textAlign: 'center', marginTop: '8px' }}>
@@ -383,12 +418,12 @@ function App() {
             If you’re still not convinced to buy a meme stick, you probably :
             <br />
             <br />
-            1) Are a psychopath
-            <br /> 2) Don’t want to save dolphins
-            <br /> 3) Got no friends
-            <br /> 4) Don’t know what{' '}
-            <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>memes</a> are
-            ?<br /> 5) Obi Wan Kenobi
+            1) Don't understand{' '}
+            <a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'>memes</a>
+            <br /> 2) Have no friends
+            <br /> 3) Hate dolphins for some reasons
+            <br /> 4) Are some kind of psychopath
+            <br /> 5) Obi Wan Kenobi
           </s.TextDescription>
 
           <s.TextSubTitle

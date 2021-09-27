@@ -92,3 +92,66 @@ input[type='range']::-webkit-slider-thumb {
 .FAQ p:nth-child(even) {
   margin-top: 50px !important;
 }
+
+.verified {
+  position: absolute;
+  top: 80px;
+  right: -65px;
+  font-size: 11px;
+  transform: skew(3deg, -3deg);
+  z-index: 0;
+  isolation: isolate;
+  opacity: 0.8;
+}
+
+.verified a {
+  text-decoration: none;
+  position: relative;
+  transition: all 0.25s;
+  color: var(--green);
+}
+
+.verified a:hover {
+  color: white;
+}
+
+.verified a:before {
+  background: var(--green);
+  margin-top: 13px;
+  content: '';
+  position: absolute;
+  inset: 0;
+  transition: all 0.25s;
+  z-index: -1;
+}
+
+.verified a:hover:before {
+  margin-top: 0px;
+}
+
+.FAQ a {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  isolation: isolate;
+  transition: all 0.25s;
+}
+
+.FAQ a:hover {
+  font-weight: bold;
+  color: white;
+}
+
+.FAQ a:before {
+  content: '';
+  position: absolute;
+  background: var(--green);
+  margin-top: 14px;
+  inset: 0;
+  z-index: -1;
+  transition: all 0.25s;
+}
+
+.FAQ a:hover:before {
+  margin-top: 0px;
+}
