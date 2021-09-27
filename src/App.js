@@ -93,7 +93,7 @@ function App() {
     if (_amount <= 0) {
       return;
     }
-    let gasLimit = 100000 * _amount * 0.8;
+    let gasLimit = 150000 * _amount;
     if (data.balance + _amount > 20 && !isOwner && !data.isWhitelisted) {
       // console.log(`${blockchain.account} owns already ${data.balance}`);
       // console.log(`amount order : ${_amount}`);
