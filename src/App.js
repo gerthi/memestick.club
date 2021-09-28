@@ -450,9 +450,11 @@ function App() {
 }
 
 export const Gallery = styled.div`
-  height: 100px;
   position: relative;
   margin-bottom: 80px;
+  width: 100vw;
+  overflow-x: hidden;
+  height: 200px;
 
   .photobanner {
     position: absolute;
@@ -487,10 +489,17 @@ export const Guarantees = styled.div`
   color: var(--dark-grey);
   padding-top: 20px;
   padding-left: 40px;
-  width: 70%;
-  gap: 130px;
+  width: 80%;
+  gap: 40px;
   justify-content: center;
-  font-size: 16px;
+  font-size: 14px;
+
+  @media (min-width: 767px) {
+    width: 70%;
+    gap: 130px;
+    font-size: 16px;
+  }
+
   ul {
     margin-top: 40px;
   }
